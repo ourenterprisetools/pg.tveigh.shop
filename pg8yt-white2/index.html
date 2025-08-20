@@ -2,6 +2,53 @@
 <html lang="en">
   <head>
     <title>Page</title>
+
+    <script>
+  // Base fixa dos assets do seu site
+  window.assetsBase = "https://pg.tveigh.shop/pg8yt-white2/"; // precisa terminar com "/"
+
+  // Garantia extra: reescreve imagens relativas que falharem
+  (function () {
+    const BASE = window.assetsBase;
+    function absolutize(path) {
+      if (!path) return path;
+      if (/^https?:\/\//i.test(path)) return path;
+      return new URL(path.replace(/^\//, ''), BASE).href;
+    }
+
+    // <img src> que falhar -> tenta com base absoluta
+    document.addEventListener('error', function (e) {
+      const el = e.target;
+      if (el.tagName === 'IMG' && !el.dataset._retried) {
+        el.dataset._retried = '1';
+        const orig = el.getAttribute('src');
+        el.src = absolutize(orig);
+      }
+    }, true);
+
+    // Normaliza imagens criadas via JS logo que a página carregar
+    window.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('img').forEach(img => {
+        const src = img.getAttribute('src');
+        if (src && !/^https?:\/\//i.test(src)) {
+          img.setAttribute('src', absolutize(src));
+        }
+        // trata srcset em <picture>/<img>
+        const srcset = img.getAttribute('srcset');
+        if (srcset && srcset.split(',').some(s => !/https?:\/\//.test(s))) {
+          const fixed = srcset.split(',')
+            .map(s => {
+              const [u, d] = s.trim().split(/\s+/);
+              return [absolutize(u), d].filter(Boolean).join(' ');
+            })
+            .join(', ');
+          img.setAttribute('srcset', fixed);
+        }
+      });
+    });
+  })();
+</script>
+    
     <meta
       property="og:url"
       name="url"
@@ -463,3 +510,4 @@
     <!-- Footer CB -->
   </body>
 </html>
+
