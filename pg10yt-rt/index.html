@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Page</title>
+
+    <link rel="stylesheet" href="css/style.css" type="text/css" />
+    <link rel="icon" href="assets/images/oficial.png" type="image/png" />
+
+    <!-- Preconnect/Preload ConverteAI -->
+    <link rel="preconnect" href="https://cdn.converteai.net" crossorigin />
+    <link rel="preconnect" href="https://scripts.converteai.net" crossorigin />
+    <link rel="preconnect" href="https://images.converteai.net" crossorigin />
+    <link rel="preconnect" href="https://api.vturb.com.br" crossorigin />
+    <link
+      rel="preload"
+      href="https://scripts.converteai.net/dc2bee22-f6b3-41ae-b28c-3a61aaac8be4/ab-test/67fa5edf7066994f5aca03b4/player.js"
+      as="script"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="https://scripts.converteai.net/lib/js/smartplayer/v1/smartplayer.min.js"
+      as="script"
+      crossorigin
+    />
+
+    <style>
+      :root {
+        --bg: #fff;
+        --fg: #111;
+        --muted: #999;
+        --eye-offset: -4dvh; /* desloca levemente para a zona de leitura */
+      }
+
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background: var(--bg);
+        color: var(--fg);
+      }
+
+      /* ===== HERO VSL ===== */
+      .hero-vsl {
+        min-height: 100dvh; /* ocupa a tela útil do smartphone */
+        display: grid;
+        place-items: center; /* centraliza horizontal/vertical */
+
+        box-sizing: border-box;
+      }
+
+      .vsl-shell {
+        width: min(100%, 780px);
+        transform: translateY(var(--eye-offset)); /* ajuste de “eye-line” */
+      }
+
+      .vsl-embed {
+        position: relative;
+        width: 100%;
+        border-radius: 12px;
+        overflow: hidden;
+      }
+
+      /* Garante que o player ocupe o container quando for movido para dentro */
+      .vsl-embed > iframe,
+      .vsl-embed > video,
+      .vsl-embed > div {
+        position: absolute !important;
+        inset: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        border: 0;
+      }
+
+      /* ===== Seções existentes ===== */
+      .trusted-logos {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin: 2rem auto;
+        padding: 0 1rem;
+        max-width: 1100px;
+      }
+      .trusted-logos img {
+        height: 50px;
+        width: auto;
+        display: block;
+      }
+
+      #stock-counter {
+        display: none;
+        font-weight: 700;
+        text-align: center;
+        margin: 0.8rem 0 1.3rem;
+        font-size: 1.1rem;
+      }
+
+      footer {
+        background: #111;
+        color: #fff;
+      }
+      .footer-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 2rem 1rem;
+        text-align: center;
+      }
+      .footer-links {
+        list-style: none;
+        padding: 0;
+        margin: 1rem 0 0;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+      .footer-links a {
+        color: #ccc;
+        text-decoration: none;
+      }
+      .footer-links a:hover,
+      .footer-links a:focus {
+        text-decoration: underline;
+      }
+      .disclaimer {
+        margin-top: 1rem;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+      .copyright {
+        margin-top: 1rem;
+        font-size: 0.85rem;
+        color: #ddd;
+      }
+
+      /* Desktop: tira o deslocamento para central absoluto puro */
+      @media (min-width: 992px) {
+        .vsl-shell {
+          transform: none;
+        }
+      }
+    </style>
+
+    <script src="https://track.onebetter-life.site/unilpclick.js?attribution=lastpaid&cookiedomain=tveigh.shop&cookieduration=90&defaultcampaignid=68ac4f1aa28b986ed658d382&regviewonce=false"></script>
+  </head>
+
+  <body>
+    <div class="hero-vsl" id="my-player"></div>
+    <script src="https://tveigh.shop/uguo2pcotm/player.js"></script>
+
+    <!-- Rodapé -->
+    <footer>
+      <div class="footer-inner">
+        <nav aria-label="Links legais">
+          <ul class="footer-links">
+            <li><a href="terms.html">Terms &amp; Conditions</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="refund.html">Refund Policy</a></li>
+          </ul>
+        </nav>
+
+        <p class="disclaimer">
+          Independence: This site operates independently from Google™ and its
+          network, including YouTube™. It is not endorsed by Google™ or
+          YouTube™. Google™ and YouTube™ are trademarks of their respective
+          owners. Medical/FDA: Content is for educational purposes only and has
+          not been evaluated by the FDA or other regulators.
+        </p>
+        <p class="copyright">&copy; 2025. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>
